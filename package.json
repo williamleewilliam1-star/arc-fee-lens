@@ -1,0 +1,1 @@
+{"name":"arc-fee-lens","version":"1.0.0","private":true,"type":"module","scripts":{"test":"node --test","verify:live":"node live-verify.mjs"}}

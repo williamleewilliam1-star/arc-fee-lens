@@ -1,0 +1,16 @@
+{
+  "schema": "arc-fee-lens.live-evidence.v1",
+  "captured_at": "2026-10-03T03:51:35.113Z",
+  "rpc": "https://rpc.mainnet.arc.io",
+  "chainId": 5042,
+  "latestBlock": "23988646",
+  "sample": {
+    "block": "23988646",
+    "tx": "0x9408a5025b79e09a0cb7c4b127a408e937b4dc47ecc3a4e49246443cd9270136",
+    "gasUsed": "183288",
+    "effectiveGasPriceWei": "40000000000",
+    "feeUSDC": "0.00733152"
+  },
+  "write_methods_used": 0,
+  "wallet_signatures": 0
+}

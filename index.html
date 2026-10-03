@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Arc Fee Lens — a read-only Arc Mainnet fee and balance inspector.">
+  <title>Arc Fee Lens — Arc Mainnet gas in USDC</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">ARC MAINNET · READ ONLY</p>
+        <h1>Arc Fee Lens</h1>
+        <p class="lede">See what Arc gas actually costs in native USDC, straight from live mainnet receipts. No wallet connection. No signing. No API key.</p>
+      </div>
+      <div id="health" class="pill loading">Connecting…</div>
+    </header>
+    <section class="grid metrics" aria-label="Network metrics">
+      <article><span>Chain</span><strong id="chain">—</strong><small id="chainStatus">verifying 5042</small></article>
+      <article><span>Latest block</span><strong id="block">—</strong><small id="blockAge">live RPC</small></article>
+      <article><span>Sample median fee</span><strong id="medianFee">—</strong><small>native USDC</small></article>
+      <article><span>Sample transactions</span><strong id="sampleCount">—</strong><small>recent receipts</small></article>
+    </section>
+    <section class="panel">
+      <div class="panel-head">
+        <div><p class="eyebrow">LIVE RECEIPTS</p><h2>Recent gas cost samples</h2></div>
+        <button id="refreshBtn" type="button">Refresh</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Tx</th><th>Block</th><th>Gas used</th><th>Effective price</th><th>Fee</th></tr></thead>
+          <tbody id="rows"><tr><td colspan="5">Loading Arc Mainnet…</td></tr></tbody>
+        </table>
+      </div>
+      <p class="note">Fee = <code>gasUsed × effectiveGasPrice</code>, formatted from Arc's native 18-decimal gas accounting into USDC-denominated gas.</p>
+    </section>
+    <section class="panel">
+      <p class="eyebrow">ADDRESS CHECK</p><h2>Native Arc balance</h2>
+      <form id="balanceForm">
+        <label for="address">Any Arc / EVM address</label>
+        <div class="input-row">
+          <input id="address" autocomplete="off" spellcheck="false" placeholder="0x…" pattern="0x[0-9a-fA-F]{40}">
+          <button type="submit">Check</button>
+        </div>
+      </form>
+      <div id="balanceResult" class="result muted">Read-only <code>eth_getBalance</code>; nothing is signed or sent.</div>
+    </section>
+    <section class="panel provenance">
+      <p class="eyebrow">PROVENANCE</p><h2>What this proves</h2>
+      <ul>
+        <li>Connects directly to the public Arc Mainnet JSON-RPC endpoint.</li>
+        <li>Fails closed unless the RPC reports chain ID <strong>5042</strong>.</li>
+        <li>Reads current blocks and transaction receipts; no cached fee oracle.</li>
+        <li>Never requests a wallet signature and never broadcasts a transaction.</li>
+      </ul>
+      <p><a href="https://github.com/williamleewilliam1-star/arc-fee-lens">Source & verification →</a></p>
+    </section>
+    <footer>Arc Fee Lens · independent open-source experiment · no custody, no transactions</footer>
+  </main>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
